@@ -1,0 +1,14 @@
+{
+  "name": "js-modules",
+  "version": "1.0.0",
+  "description": "Testing the webpack effect",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Nazmuz Shakib Pranto",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^2.2.1"
+  }
+}
