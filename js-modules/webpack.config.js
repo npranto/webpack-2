@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // 'entry' value is a relative path to index.js
 // it is required for output to have the 2 keys, path and filename
@@ -9,9 +10,15 @@ const path = require('path');
         // 'babel-loader' - teaches babel how to deal with webpack build system
         // 'babel-core' - takes in a input file to traform and outputs another, however does not actually transform it
         // 'babel-preset-env' - the actual brains and ruleset for transforming es6 code to es5
-// CSS rule
+// CSS rule:
         // 'css-loader' - knows how to deal with CSS file imports
         // 'style-loader' - executes the imported CSS into the HTML content
+
+// ExtractTextPlugin - mainly used to extract and split portions of bundled code into different files
+// Image rule:
+        // 'image-webpack-loader' - for compressing any size of image, so it would be better in terms of load time in the browser
+        // 'url-loader' - distinct between different sizes of images and in charge of placing image in the bundle(for smaller images) or perhaps in a different output directory(for larger images)
+        // for 'url-loader', the limit property inside options refer to the following - only include images inside the bundle file if the size is 40,000 bytes or less
 
 const webpackConfig = {
     entry: './src/index.js',
@@ -22,17 +29,22 @@ const webpackConfig = {
     module: {
         rules: [
             {
-                use: 'babel-loader',
                 test: /\.js$/,
+                use: 'babel-loader',
                 exclude: /node_modules/
             },
             {
-                use: ['style-loader', 'css-loader'],
                 test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                   use: 'css-loader'
+                }),
                 exclude: /node_modules/
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('inline.css')
+    ]
 }
 
 module.exports = webpackConfig;
