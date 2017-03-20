@@ -1,7 +1,8 @@
-const sum = require('./operations/sum');
-const subtract = require('./operations/subtract');
-const multiply = require('./operations/multiply');
-const divide = require('./operations/divide');
+import sum from './operations/sum';
+import subtract from './operations/subtract';
+import multiply from './operations/multiply';
+import divide from './operations/divide';
+import './image-viewer/image-viewer';
 
 let num1 = 15;
 let num2 = 10;
