@@ -9,6 +9,11 @@
   "author": "Nazmuz Shakib Pranto",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "css-loader": "^0.27.3",
+    "style-loader": "^0.14.1",
     "webpack": "^2.2.1"
   }
 }
