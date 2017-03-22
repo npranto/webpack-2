@@ -1,0 +1,22 @@
+{
+  "name": "js-modules",
+  "version": "1.0.0",
+  "description": "Testing the webpack effect",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Nazmuz Shakib Pranto",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "css-loader": "^0.27.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "image-webpack-loader": "^3.2.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1"
+  }
+}
