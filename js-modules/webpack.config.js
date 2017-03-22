@@ -28,7 +28,7 @@ const webpackConfig = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'app.bundle.js',
         publicPath: 'dist/'
     },
     module: {
@@ -61,7 +61,7 @@ const webpackConfig = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('inline.css')
+        new ExtractTextPlugin('style.bundle.css')
     ]
 }
 
