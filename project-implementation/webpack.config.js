@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // includes all libraries/packages/dependencies for the app (listed inder "dependencies" in package.json )
 const VENDOR_LIBS = [
@@ -21,6 +22,11 @@ const VENDOR_LIBS = [
 
 // the 'CommonsChunkPlugin' plugin is used to optimize code usage by getting rid of duplicate use of code throughout the app
 // in our case, using the 'CommonsChunkPlugin' plugins will shrink the size of our app.bundle.js by getting rid of dependencies instantiations
+
+// the 'HtmlWebpackPlugin' plugin automatically adds bundle files scripts inside our index.html file, without us manually adding them
+
+// 'manifest' along with 'vendor' has been added inside the array inside 'CommonsChunkPlugin' is to restrict chunkhash from generating new hash every time when app.bundle.js has been changed
+
 module.exports = {
     entry: {
         app: './src/index.js',
@@ -28,7 +34,7 @@ module.exports = {
     },
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: '[name].bundle.js'
+      filename: '[name].[chunkhash].bundle.js'
     },
     module: {
       rules: [
@@ -46,7 +52,10 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor'
+            names: ['vendor', 'manifest']
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
         })
     ]
 };
