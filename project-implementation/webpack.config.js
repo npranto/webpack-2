@@ -27,6 +27,8 @@ const VENDOR_LIBS = [
 
 // 'manifest' along with 'vendor' has been added inside the array inside 'CommonsChunkPlugin' is to restrict chunkhash from generating new hash every time when app.bundle.js has been changed
 
+// add 'process.env.NODE_ENV' key with following value only when ready for production; adding it tells React to take it easy on heavy error checking since we are in production mode
+
 module.exports = {
     entry: {
         app: './src/index.js',
@@ -56,6 +58,9 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html'
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         })
     ]
 };
